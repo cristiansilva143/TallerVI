@@ -3,6 +3,12 @@ const app = express();
 const request = require('request');
 const async = require('async');
 
+app.get('/', function(req, res) {
+    console.log('Path: '+__dirname);
+    res.sendFile(__dirname + '/index.html');
+});
+
+
 app.get('/upcoming', (req, res) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
     async.times(2, (i, callback) => {
@@ -21,6 +27,9 @@ app.get('/upcoming', (req, res) => {
         callback(null, data);
     });
     }, (err, results) => {
+console.log("**********************************");
+console.dir(results);
+
         res.json(results);
     });
 })

@@ -17,14 +17,14 @@
 
 <body>
     <div class="container my-5 text-center">
-        <button class="btn btn-danger w-100" onclick="traer()">Obtener</button>
+        <button class="btn btn-danger w-100" onclick="traer()">Obtener JSON</button>
         <div class="mt-5">
             <table class="table">
                 <thead>
                     <tr>
                         <th scope="col">id</th>
                         <th scope="col">video</th>
-                        <th scope="col">title</th>
+                        <th scope="col">original_title</th>
                         <th scope="col">original_language</th>
                     </tr>
                 </thead>
@@ -37,16 +37,14 @@
 
     <script>
         var contenido = document.querySelector('#contenido')
-
         function traer() {
-            fetch('http://127.0.0.1:8010/tabla.json')
-                .then(res => res.json())
+            fetch('/upcoming')
+                .then(res =>  res.json())//JSON.parse ( theStringThatIsNotJson ))
                 .then(datos => {
                     console.log(datos)
                     tabla(datos)
                 })
         }
-
         function tabla(datos) {
             console.log(datos)
             contenido.innerHTML = ''
@@ -55,16 +53,15 @@
                 contenido.innerHTML += `
                 
                 <tr>
-                    <th scope="row">${ valor.id }</th>
-                    <td>${ valor.video }</td>
-                    <td>${ valor.title }</td>
-                    <td>${ valor.original_language}</td>
+                    <th scope="row">${valor.id }</th>
+                    <td>${valor.video}</td>
+                    <td>${valor.original_title}</td>
+                    <td>${valor.original_language}</td>
                 </tr>
                 
                 `
             }
         }
-
     </script>
 
 
