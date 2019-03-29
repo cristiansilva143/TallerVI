@@ -32,7 +32,15 @@ console.dir(results);
 
         res.json(results);
     });
-})
+});
+
+app.get('/auth/login', (req, res) => {
+    console.log(req.query.usr);
+    return {};
+    });
+
+
+
 
 app.listen('8010', () => {
     console.log('Listening on port 8010');

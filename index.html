@@ -7,25 +7,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
+    <link href="/favicon.ico" type="image/x-icon" rel="icon" /> 
     <link rel="stylesheet" 
         href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" 
         integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
         crossorigin="anonymous">
+
+        
 
     <title></title>
 </head>
 
 <body>
     <div class="container my-5 text-center">
+        <button class="btn btn-danger w-100" onclick="testLogin()">Test login</button>
+         </br>
+         </br>
         <button class="btn btn-danger w-100" onclick="traer()">Obtener JSON</button>
         <div class="mt-5">
             <table class="table">
                 <thead>
                     <tr>
-                        <th scope="col">id</th>
-                        <th scope="col">video</th>
-                        <th scope="col">original_title</th>
-                        <th scope="col">original_language</th>
+                        <th scope="col">iD</th>
+                        <th scope="col">Video</th>
+                        <th scope="col">Original_Title</th>
+                        <th scope="col">Original_Language</th>
                     </tr>
                 </thead>
                 <tbody id="contenido">
@@ -46,21 +52,30 @@
                 })
         }
         function tabla(datos) {
-            console.log(datos)
-            contenido.innerHTML = ''
-            for(let valor of datos){
-                // console.log(valor.video)
+           console.log(datos)
+            contenido.innerHTML = '';
+            //let _datos=datos[0];
+            //_datos.concat(datos[1]);
+            //let idx=1;
+            for(let valor of datos[0]){
+               
                 contenido.innerHTML += `
-                
                 <tr>
+                   
                     <th scope="row">${valor.id }</th>
-                    <td>${valor.video}</td>
-                    <td>${valor.original_title}</td>
-                    <td>${valor.original_language}</td>
-                </tr>
-                
-                `
+                    <td>${valor.vote_count}</td>
+                    <td>${valor.vote_average}</td>
+                    <td>${valor.title}</td>
+                </tr>                 
+                `;
+                //idx++;
+                    
             }
+        }
+
+        function testLogin(){
+            fetch('/auth/login?usr=cristian&pwd=lili')
+            .then(res =>  console.log(res) );
         }
     </script>
 
