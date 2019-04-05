@@ -21,18 +21,25 @@
 <body>
     <div class="container my-5 text-center">
         <button class="btn btn-danger w-100" onclick="testLogin()">Test login</button>
-         </br>
-         </br>
-        <button class="btn btn-danger w-100" onclick="traer()">Obtener JSON</button>
+            </br>
+            </br>
+        <button class="btn btn-danger w-100" onclick="traer()">Obtener Json</button>
+            </br>
+            </br>
+         <button class="btn btn-danger w-100" onclick="eliminar()">Eliminar</button>
+            </br>
+            </br>
         <div class="mt-5">
             <table class="table">
                 <thead>
                     <tr>
-                        <th scope="col">iD</th>
+                        <th scope="col">iD </th>
                         <th scope="col">Video</th>
                         <th scope="col">Original_Title</th>
                         <th scope="col">Original_Language</th>
+                        
                     </tr>
+                    
                 </thead>
                 <tbody id="contenido">
                     
@@ -50,6 +57,8 @@
                     console.log(datos)
                     tabla(datos)
                 })
+
+     
         }
         function tabla(datos) {
            console.log(datos)
@@ -59,7 +68,7 @@
             //let idx=1;
             for(let valor of datos[0]){
                
-                contenido.innerHTML += `
+                contenido.innerHTML += `    
                 <tr>
                    
                     <th scope="row">${valor.id }</th>
@@ -74,7 +83,7 @@
         }
 
         function testLogin(){
-            fetch('/auth/login?usr=cristian&pwd=lili')
+            fetch('/auth/login?usr=cristian&pwd=123')
             .then(res =>  console.log(res) );
         }
     </script>
