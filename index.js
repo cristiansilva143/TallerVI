@@ -36,7 +36,7 @@ app.get('/', function(req, res) {
 
 app.get('/upcoming', (req, res) => {
     //res.setHeader('', '*');
-    async.times(2, (i, callback) => {
+    async.times(1, (i, callback) => {
     var options = {
         url: 'https://api.themoviedb.org/3/movie/upcoming?api_key=ee6206f4b5d4aa4e800d0117d6724efb',
         
@@ -48,7 +48,7 @@ app.get('/upcoming', (req, res) => {
     });
     }, (err, results) => {
         
-        res.json(results);
+        res.status(200).json(results);
     });
 });
 
@@ -74,5 +74,5 @@ app.post('/upcoming', (req, res) => {
         res.json(movies);*/
         res.send("Ok post!");
     }
-    });
+    );
 

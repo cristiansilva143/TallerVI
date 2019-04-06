@@ -4,13 +4,15 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "nodemon src/index.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@material-ui/core": "^3.9.3",
     "async": "^2.6.2",
     "express": "^4.16.4",
+    "pg": "^7.9.0",
     "request": "^2.88.0"
   }
 }
